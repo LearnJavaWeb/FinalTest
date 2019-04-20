@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Nhan Vien</title>
+</head>
+<body>
+<h1>Tao Nhan vien</h1>
+<p>
+    <a href="/nhanviens">Danh Sach Nhan Vien</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-nhanvien}" th:object="${nhanvien}" method="post">
+    <table>
+        <tr>
+            <td>Ten Nhan Vien:</td>
+            <td><input type="text" th:field="*{ten}"/></td>
+        </tr>
+        <tr>
+            <td>So dien thoai:</td>
+            <td><input type="text" th:field="*{soDienThoai}"/></td>
+        </tr>
+        <tr>
+            <td>So CMND:</td>
+            <td><input type="text" th:field="*{cmnd}"/></td>
+        </tr>
+        <tr>
+            <td>Dia Chi:</td>
+            <td><input type="text" th:field="*{diaChi}"/></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="email" th:field="*{email}"/></td>
+        </tr>
+        <tr>
+            <td>Ngay sinh:</td>
+            <td><input type="date" th:field="*{ngaySinh}"/></td>
+        </tr>
+        <tr>
+            <td>Gioi tinh:</td>
+            <td><input type="radio" th:field="*{gioiTinh}" value="true"/>Nam</td>
+            <td><input type="radio" th:field="*{gioiTinh}" value="false">Nu</td>
+        </tr>
+        <tr>
+        <tr>
+            <td>Nhom Nhan Vien:</td>
+            <td>
+                <select th:field="*{nhomNhanVien}">
+                    <option th:each="p : ${nhomnvs}" th:value="${p.id}" th:text="${p.name}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Tao Nhan Vien"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

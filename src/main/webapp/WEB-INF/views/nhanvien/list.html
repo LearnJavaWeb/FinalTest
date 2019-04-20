@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh Sach Nhan Vien</title>
+</head>
+<body>
+<a href="/create-nhanvien">Tao Nhan Vien Moi</a>
+<h1>Nhan Vien</h1>
+
+<form>
+    Search by first name:
+    <input name="s" type="text"/>
+    <input type="submit" value="Search"/>
+</form><br/>
+
+<table border="1">
+    <tr>
+        <th>Ten Nhan Vien</th>
+        <th>Ngay Sinh</th>
+        <th>Dia Chi</th>
+        <th>Gioi tinh</th>
+        <th>So Dien Thoai</th>
+        <th>Email</th>
+        <th>CMND</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="nhanvien : ${nhanviens}">
+        <tr>
+            <td th:text="${nhanvien.ten}"></td>
+            <td th:text="${nhanvien.ngaySinh}"></td>
+            <td th:text="${nhanvien.diaChi}"></td>
+            <td th:text="${nhanvien.gioiTinh}"></td>
+            <td th:text="${nhanvien.soDienThoai}"></td>
+            <td th:text="${nhanvien.email}"></td>
+            <td th:text="${nhanvien.cmnd}"></td>
+            <td><a th:href="@{/edit-nhanvien/__${nhanvien.id}__ }">Edit</a></td>
+            <td><a th:href="@{/delete-nhanvien/__${nhanvien.id}__ }">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+<div>
+    <a th:href="@{'/nhanviens'(page=${nhanviens.number - 1})}" th:if="${nhanviens.hasPrevious()}">Previous</a>
+    <span th:text="${nhanviens.number + 1}"></span>/<span th:text="${nhanviens.totalPages}"></span>
+    <a th:href="@{'/nhanviens'(page=${nhanviens.number + 1})}" th:if="${nhanviens.hasNext()}">Next</a>
+</div>

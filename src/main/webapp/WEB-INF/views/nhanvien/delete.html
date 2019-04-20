@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete nhan vien</title>
+</head>
+<body>
+<h1>Delete nhan vien</h1>
+<h2>Are you sure?</h2>
+<p>
+    <a href="/nhanviens">Danh Sach</a>
+</p>
+<form th:action="@{/delete-nhanvien}" th:object="${nhanvien}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>Ten Nhan Vien:</td>
+            <td><input type="text" th:field="*{ten}"/></td>
+        </tr>
+        <tr>
+            <td>So dien thoai:</td>
+            <td><input type="text" th:field="*{soDienThoai}"/></td>
+        </tr>
+        <tr>
+            <td>So CMND:</td>
+            <td><input type="text" th:field="*{cmnd}"/></td>
+        </tr>
+        <tr>
+            <td>Dia Chi:</td>
+            <td><input type="text" th:field="*{diaChi}"/></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="email" th:field="*{email}"/></td>
+        </tr>
+        <tr>
+            <td>Ngay sinh:</td>
+            <td><input type="date" th:field="*{ngaySinh}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Xoa Nhan Vien"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
